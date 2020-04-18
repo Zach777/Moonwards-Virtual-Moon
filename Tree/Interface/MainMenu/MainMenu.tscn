@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tree/Interface/MainMenu/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://Tree/Interface/MainMenu/Hangars_toHorizon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Interface/Textures/menu_splash.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Interface/MainMenu.tres" type="Theme" id=3]
 [ext_resource path="res://Tree/Interface/MainMenu/About/About.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Interface/Fonts/MainMenuFont.tres" type="DynamicFont" id=7]
@@ -65,7 +65,7 @@ anchor_top = 0.95
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 120.0
-margin_top = 100.0
+margin_top = 20.0
 margin_right = -120.0
 margin_bottom = -250.0
 grow_horizontal = 2
@@ -79,7 +79,7 @@ __meta__ = {
 
 [node name="bStart" type="Button" parent="Bottom"]
 margin_right = 1680.0
-margin_bottom = 21.0
+margin_bottom = 25.0
 text = "Start Game"
 
 [node name="bJoinServer" type="Button" parent="Bottom"]
@@ -98,23 +98,29 @@ theme = ExtResource( 8 )
 custom_fonts/font = ExtResource( 7 )
 text = "Local Game"
 
-[node name="bAbout" type="Button" parent="Bottom"]
-margin_top = 25.0
-margin_right = 1680.0
-margin_bottom = 46.0
-theme = ExtResource( 8 )
-custom_fonts/font = ExtResource( 7 )
-text = "About"
-
-[node name="bQuit" type="Button" parent="Bottom"]
-margin_top = 50.0
-margin_right = 1680.0
-margin_bottom = 71.0
-theme = ExtResource( 8 )
-custom_fonts/font = ExtResource( 7 )
+[node name="Quit" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_right = 100.0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 100 )
+rect_pivot_offset = Vector2( 53.8794, 87.2272 )
+theme = ExtResource( 3 )
 text = "Quit"
+
+[node name="About" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 100 )
+rect_pivot_offset = Vector2( 53.8794, 87.2272 )
+theme = ExtResource( 3 )
+text = "About"
 [connection signal="pressed" from="Bottom/bStart" to="." method="_on_bStart_pressed"]
 [connection signal="pressed" from="Bottom/bJoinServer" to="." method="_on_bJoinServer_pressed"]
 [connection signal="pressed" from="Bottom/bLocalGame" to="." method="_on_bLocalGame_pressed"]
-[connection signal="pressed" from="Bottom/bAbout" to="." method="_on_bAbout_pressed"]
-[connection signal="pressed" from="Bottom/bQuit" to="." method="_on_bQuit_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="About" to="." method="_on_About_pressed"]
