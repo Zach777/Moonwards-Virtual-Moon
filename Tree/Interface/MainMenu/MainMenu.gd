@@ -32,5 +32,24 @@ func _on_bStart_pressed() -> void:
 #	get_tree().change_scene_to(test_scene)
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+#Toggle the About scene.
 func _on_About_pressed():
-	tabs.current_tab = get_node( "Top/Tabs/About" ).get_position_in_parent()
+	var about : PanelContainer = get_node("HBoxContainer/About")
+	var panel : Panel = get_node("HBoxContainer/Panel")
+	var v_box : VBoxContainer = get_node("HBoxContainer/VBoxContainer")
+	var about_button : Button = get_node("About")
+	
+	if about.visible:
+		about.hide()
+		panel.show()
+		v_box.show()
+		about_button.text = "About"
+	
+	else:
+		panel.hide()
+		v_box.hide()
+		about.show()
+		about_button.text = "Hide About"
+
+func _on_StartGame_pressed():
+	pass # Replace with function body.
