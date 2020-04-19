@@ -1,18 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Tree/Interface/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Interface/Textures/menu_splash.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Interface/MainMenu.tres" type="Theme" id=3]
 [ext_resource path="res://Assets/Interface/Textures/MoonwardsLogo2018-1200.png" type="Texture" id=4]
-[ext_resource path="res://Tree/Interface/MainMenu/About/About.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Interface/Fonts/MainMenuFont.tres" type="DynamicFont" id=7]
-[ext_resource path="res://Assets/Interface/Display.tres" type="Theme" id=8]
-
-[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="MainMenu" type="CanvasLayer"]
 layer = 10
-script = ExtResource( 1 )
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -21,6 +14,7 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 7
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -40,81 +34,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Top" type="HBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -522.0
-margin_top = -397.0
-margin_right = 524.0
-margin_bottom = 280.0
-theme = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tabs" type="TabContainer" parent="Top"]
-margin_right = 1046.0
-margin_bottom = 677.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/panel = SubResource( 1 )
-tabs_visible = false
-
-[node name="Empty" type="Control" parent="Top/Tabs"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="About" parent="Top/Tabs" instance=ExtResource( 5 )]
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
-
-[node name="Bottom" type="VBoxContainer" parent="."]
-anchor_top = 0.95
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 120.0
-margin_top = 20.0
-margin_right = -120.0
-margin_bottom = -250.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="bStart" type="Button" parent="Bottom"]
-margin_right = 1680.0
-margin_bottom = 25.0
-text = "Start Game"
-
-[node name="bJoinServer" type="Button" parent="Bottom"]
-visible = false
-margin_right = 1680.0
-margin_bottom = 21.0
-theme = ExtResource( 8 )
-custom_fonts/font = ExtResource( 7 )
-text = "Join Server"
-
-[node name="bLocalGame" type="Button" parent="Bottom"]
-visible = false
-margin_right = 1680.0
-margin_bottom = 21.0
-theme = ExtResource( 8 )
-custom_fonts/font = ExtResource( 7 )
-text = "Local Game"
-
 [node name="Quit" type="Button" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -124,6 +43,9 @@ rect_min_size = Vector2( 100, 100 )
 rect_pivot_offset = Vector2( 53.8794, 87.2272 )
 theme = ExtResource( 3 )
 text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="About" type="Button" parent="."]
 anchor_left = 1.0
@@ -136,8 +58,53 @@ rect_min_size = Vector2( 100, 100 )
 rect_pivot_offset = Vector2( 53.8794, 87.2272 )
 theme = ExtResource( 3 )
 text = "About"
-[connection signal="pressed" from="Bottom/bStart" to="." method="_on_bStart_pressed"]
-[connection signal="pressed" from="Bottom/bJoinServer" to="." method="_on_bJoinServer_pressed"]
-[connection signal="pressed" from="Bottom/bLocalGame" to="." method="_on_bLocalGame_pressed"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 83.0
+margin_bottom = 68.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 63.0
+margin_bottom = 44.0
+size_flags_horizontal = 0
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 49.0
+margin_bottom = 68.0
+size_flags_horizontal = 0
+text = "Other"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="About" to="." method="_on_About_pressed"]
