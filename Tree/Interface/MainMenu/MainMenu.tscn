@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tree/Interface/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Interface/Textures/menu_splash.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Interface/MainMenu.tres" type="Theme" id=3]
 [ext_resource path="res://Assets/Interface/Textures/MoonwardsLogo2018-1200.png" type="Texture" id=4]
 [ext_resource path="res://Tree/Interface/MainMenu/About/About.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Tree/Interface/MainMenu/MainMenuHBox.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.588235 )
@@ -84,6 +85,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource( 3 )
 custom_constants/separation = 120
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -101,6 +103,7 @@ __meta__ = {
 margin_top = 212.0
 margin_right = 92.0
 margin_bottom = 237.0
+focus_neighbour_bottom = NodePath("../Settings")
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Start Game"
@@ -112,6 +115,8 @@ __meta__ = {
 margin_top = 257.0
 margin_right = 70.0
 margin_bottom = 282.0
+focus_neighbour_top = NodePath("../StartGame")
+focus_neighbour_bottom = NodePath("../Other")
 size_flags_horizontal = 0
 text = "Settings"
 __meta__ = {
@@ -122,6 +127,7 @@ __meta__ = {
 margin_top = 302.0
 margin_right = 48.0
 margin_bottom = 327.0
+focus_neighbour_top = NodePath("../Settings")
 size_flags_horizontal = 0
 text = "Other"
 __meta__ = {
@@ -132,6 +138,7 @@ __meta__ = {
 margin_left = 212.0
 margin_right = 1152.0
 margin_bottom = 540.0
+rect_min_size = Vector2( 150, 180 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
