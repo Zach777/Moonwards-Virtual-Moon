@@ -155,4 +155,10 @@ margin_right = 1152.0
 margin_bottom = 540.0
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="About" to="." method="_on_About_pressed"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/StartGame" to="HBoxContainer" method="_on_StartGame_highlighted"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/StartGame" to="HBoxContainer" method="_on_StartGame_highlighted"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/Settings" to="HBoxContainer" method="_on_Settings_highlighted"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/Settings" to="HBoxContainer" method="_on_Settings_highlighted"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/Other" to="HBoxContainer" method="_on_Other_highlighted"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/Other" to="HBoxContainer" method="_on_Other_highlighted"]
