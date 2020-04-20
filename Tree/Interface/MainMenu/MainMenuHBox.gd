@@ -15,7 +15,7 @@ var surges : Array = []
 var surge_transfers : Array = []
 
 #How long surge transfers last in seconds.
-const TRANSFER_DURATION : float = 0.2
+const TRANSFER_DURATION : float = 0.18
 #How fast the surges travel.
 const SURGE_SPEED : float = 248.0
 
@@ -53,7 +53,16 @@ func _draw() -> void :
 	
 	#Animate the surge transfers.
 	for transfer in surge_transfers :
-		draw_circle(transfer[0], 12, Color(1,1,1,1))
+		var middle_rect : Rect2 = Rect2()
+		if transfer[1] >= TRANSFER_DURATION - (TRANSFER_DURATION * 0.25) :
+			middle_rect = Rect2(transfer[0].x - 3, transfer[0].y - 5, 6, 10)
+		elif transfer[1] >= TRANSFER_DURATION - (TRANSFER_DURATION * 0.50) :
+			middle_rect = Rect2(transfer[0].x - 2, transfer[0].y - 8, 4, 16)
+		elif transfer[1] >= TRANSFER_DURATION - (TRANSFER_DURATION * 0.75) :
+			middle_rect = Rect2(transfer[0].x - 2, transfer[0].y - 9, 4, 18)
+		else :
+			middle_rect = Rect2(transfer[0].x - 2, transfer[0].y - 10, 4, 20)
+		draw_rect(middle_rect, Color(1,1,1,1))
 
 #Draw each frame to keep up to date with resolution changes.
 #warning-ignore:unused_argument
@@ -80,7 +89,7 @@ func _process(delta : float) -> void :
 		surges.remove(pos)
 	
 	#Track the lifetime of the surge transfers. 
-	#Remember surge transfers that have lasted past their duration.
+	#Remember surge transfers that have lasted past their duration to free later.
 	#warning-ignore:return_value_discarded
 	remove_surges = []
 	for transfer in surge_transfers :
