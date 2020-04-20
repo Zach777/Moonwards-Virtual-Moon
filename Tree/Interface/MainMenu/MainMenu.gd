@@ -3,9 +3,6 @@ extends CanvasLayer
 	MainMenu Singleton Scene Script
 """
 
-onready var tabs: TabContainer = $"Top/Tabs"
-
-
 #Show the main menu.
 func show() -> void:
 	for i in get_children():
@@ -17,9 +14,6 @@ func hide() -> void:
 	for i in get_children():
 		if i is Control:
 			i.visible = false
-
-func _on_bLocalGame_pressed() -> void:
-	tabs.current_tab = 3
 
 func _on_Quit_pressed() -> void:
 #	Options.save_user_settings()

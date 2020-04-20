@@ -11,7 +11,11 @@ onready var current_button : Button = START_GAME
 
 #These are the current surges.
 var surges : Array = []
+#What gets shown when a surge reaches the panel.
+var surge_transfers : Array = []
 
+#How long surge transfers last in seconds.
+const TRANSFER_DURATION : float = 0.2
 #How fast the surges travel.
 const SURGE_SPEED : float = 248.0
 
@@ -46,6 +50,10 @@ func _draw() -> void :
 		draw_rect(rect2, Color(1,1,1,1))
 		draw_rect(rect3, Color(1,1,1,1))
 		draw_rect(rect4, Color(1,1,1,1))
+	
+	#Animate the surge transfers.
+	for transfer in surge_transfers :
+		draw_circle(transfer[0], 12, Color(1,1,1,1))
 
 #Draw each frame to keep up to date with resolution changes.
 #warning-ignore:unused_argument
@@ -64,7 +72,26 @@ func _process(delta : float) -> void :
 	#Remove the surges that are past the Panel.
 	remove_surges.invert()
 	for pos in remove_surges :
+		#Add a surge transfer at the location of the free'd surge.
+		var transfer_position : Vector2 = Vector2(PANEL.rect_position.x, surges[pos][0].y)
+		surge_transfers.append([transfer_position, TRANSFER_DURATION])
+		
+		#Actually remove the surge
 		surges.remove(pos)
+	
+	#Track the lifetime of the surge transfers. 
+	#Remember surge transfers that have lasted past their duration.
+	#warning-ignore:return_value_discarded
+	remove_surges = []
+	for transfer in surge_transfers :
+		if transfer[1] <= 0 :
+			remove_surges.append(surge_transfers.find(transfer))
+		transfer[1] -= delta
+	
+	#Remove the dead surge transfers
+	remove_surges.invert()
+	for pos in remove_surges :
+		surge_transfers.remove(pos)
 
 func _ready() -> void :
 	get_node("VBoxContainer/StartGame").grab_focus()
