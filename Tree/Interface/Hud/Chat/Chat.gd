@@ -91,11 +91,9 @@ func _toggle_chat_window() -> void :
 	#myself visible again.
 	visible = true
 
-func add_message(new_text: String) -> void:
-	_chat_display_node.newline()
-
-	#warning-ignore:return_value_discarded
-	_chat_display_node.append_bbcode(new_text)
+#Add a message to the chat history.
+func add_message(sender : EntityData, new_text: String) -> void:
+	_chat_display_node.add_message(sender, new_text)
 
 #Cause the chat to fade into being invisible.
 #Meant to be called from somewhere else. Usually from a group call.
