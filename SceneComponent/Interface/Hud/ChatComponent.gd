@@ -23,4 +23,4 @@ master func _send_chat_message(message: String) -> void:
 # Runs on the clients
 puppetsync func _receive_chat_message(message: String) -> void:
 	Log.trace(self, "", "Received chat message: %s" % message)
-	chatbox.add_message(Network.get_sender_entity(), message)
+	chatbox.add_message(message)
