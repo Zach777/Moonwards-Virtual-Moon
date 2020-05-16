@@ -60,7 +60,7 @@ func _on_JoinMainServer_pressed():
 
 func _on_StartCustomServer_pressed():
 	Signals.Network.emit_signal(Signals.Network.GAME_CLIENT_REQUESTED, "127.0.0.1", 5000)
->>>>>>> theirs
+
 
 func _on_JoinServer_pressed():
 	var ipv4_address : String = CUSTOM_SERVER_ADDRESS_FIELD.text
